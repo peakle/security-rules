@@ -1,0 +1,10 @@
+linters:
+  disable:
+    - typecheck
+    - deadcode
+    - unused
+    - varcheck
+  enable:
+    - gofmt
+    - govet
+    - gocyclo
