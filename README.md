@@ -6,6 +6,14 @@ Ruleguard security rules
 [![Go Report Card](https://goreportcard.com/badge/github.com/peakle/security-rules)](https://goreportcard.com/report/github.com/peakle/security-rules)
 [![Go Reference](https://pkg.go.dev/badge/github.com/peakle/security-rules.svg)](https://pkg.go.dev/github.com/peakle/security-rules)
 
+### What are we checking now?:
+1. HTTP without SSL
+2. old hash functions like: md5
+3. TLS insecureSkipVerify option usage
+4. Old TLS versions
+5. Old cipher functions usage: like RC4
+7. Swagger body validation function usage
+
 ### How to use:
 
 Full installation example: https://github.com/peakle/dc-rules-example
