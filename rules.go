@@ -23,8 +23,17 @@ func insecureSkipVerify(m dsl.Matcher) {
 		Report(`In this mode, TLS is susceptible to MITM attacks unless custom verification is used`)
 }
 
-func oldTLS(m dsl.Matcher)                {}
-func passwordInCode(m dsl.Matcher)        {}
-func oldHashFunc(m dsl.Matcher)           {}
+func oldTLS(m dsl.Matcher)         {}
+func passwordInCode(m dsl.Matcher) {}
+
+func oldHashFunc(m dsl.Matcher) {
+	m.Match(`crypto.MD4`, `crypto.MD5`, `crypto.SHA1`, `crypto.RIPEMD160`).
+		Report(`Don't use old hash functions with short digest size`)
+
+	m.Match(`md5.New($*_)`, `md5.Sum($*_)`, `sha1.New($*_)`, `sha1.Sum($*_)`).
+		Report(`Don't use old hash functions with short digest size`)
+}
+
 func oldCryptoAlgorithms(m dsl.Matcher)   {}
 func swaggerBodyValidation(m dsl.Matcher) {}
+func oldCipherSuite(m dsl.Matcher)        {}
